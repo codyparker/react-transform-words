@@ -17,8 +17,14 @@ describe('Transformer', () => {
     first_word: [ {word: 'This'} ],
     clickable_no_action: [ {word: 'clickable', action: 'click'} ],
     clickable_with_action: [ {word: 'clickable', action: 'click', actionCallback: testFn }],
-
+    mouseover_with_action: [ {word: 'transform', action: 'mouseover', actionCallback: testFn }],
+    doubleclick_with_action: [ {word: 'transform', action: 'doubleclick', actionCallback: testFn }],
+    change_text: [ {word: 'transform', action: 'change', replaceText: 'replaced it' }],
   }
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
 
   it('is truthy', () => {
@@ -54,9 +60,7 @@ describe('Transformer', () => {
         displayText={displayText}
         words={testWords.basic_no_class} />
     )
-    console.log(wrapper.debug())
-    console.log(wrapper.first().childAt(1).props('className'))
-    expect(wrapper.first().childAt(1).hasClass('Transformer-highlighter')).toBe(true)
+    expect(wrapper.first().childAt(1).hasClass('transformer')).toBe(true)
   })
 
   it('should render the found word with the custom class provided', () => {
@@ -96,19 +100,48 @@ describe('Transformer', () => {
     expect(testFn).toHaveBeenCalled()
   })
 
-  it('should be provided an actionCallback prop if click action is provided', () => {
+ it('should return with a hover span if word action = mouseover', () => {
+
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.clickable_no_action} />
+        words={testWords.mouseover_with_action} />
     )
+    wrapper.first().childAt(1).simulate('mouseover')
+    expect(testFn).toHaveBeenCalled()
+  })
 
+  it('should return with a double-click span if word action = doubleclick', () => {
+
+    const wrapper = shallow(
+      <Transformer
+        displayText={displayText}
+        words={testWords.doubleclick_with_action} />
+    )
+    wrapper.first().childAt(1).simulate('doubleclick')
+    expect(testFn).toHaveBeenCalled()
+  })
+
+  it('should return with a double-click span if word action = doubleclick', () => {
+
+    const wrapper = shallow(
+      <Transformer
+        displayText={displayText}
+        words={testWords.doubleclick_with_action} />
+    )
+    wrapper.first().childAt(1).simulate('doubleclick')
+    expect(testFn).toHaveBeenCalled()
+  })
+
+   it('should return with a double-click span if word action = doubleclick', () => {
+
+    const wrapper = shallow(
+      <Transformer
+        displayText={displayText}
+        words={testWords.change_text} />
+    )
+    expect(wrapper.first().childAt(1).text()).toEqual('replaced it')
   })
 
 
-  // should handle actions: change, doubleclick, click, mouseover
-  // basic should take in simple array and apply default hightlight
-  // should handle case sensitivity
-  // should handle advanced word list with properties
-  
 })

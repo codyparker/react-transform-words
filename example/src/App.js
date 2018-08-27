@@ -39,7 +39,7 @@ export default class App extends Component {
 
   render () {
     const clickDayman = () => {
-      console.log("CLICK!!")
+      console.log("-- CLICKED DAYMAN!! --")
       window.open("http://itsalwayssunny.wikia.com/wiki/The_Dayman", "_blank")
     }
     const optionDetails = {
@@ -64,6 +64,7 @@ export default class App extends Component {
       },
       "custom": {
         word: this.state.customText,
+        className: "custom-search-style"
       }
     }
   

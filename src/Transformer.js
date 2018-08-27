@@ -8,31 +8,28 @@ export const buildMatches = (words, text) => {
   words.filter(hw => hw !== '').forEach((w) => {
     // if there was no start and end provided, search for th word instead
     if (w.start === undefined && w.end === undefined) {
+      const searchWord = w.word
       const modifiers = w.caseSensitive ? 'g' : 'gi'
-      const regex = new RegExp(w.word, modifiers)
-      const matches = []
-      let match = null
+      const regex = new RegExp(searchWord, modifiers)
+      let match = []
 
       // eslint-disable-next-line no-cond-assign
-      while ((match = regex.exec(text)) !== null) {
-        matches.push(match)
-      }
-
-      matches.forEach((match) => {
-        const start = match.index
-        const end = start + w.word.length
-        // save start and end in a matchObj
+      while (match = regex.exec(text)) {
+        // Chrome locked up in testing with a pipe in the search text, found the issue on regexguru
+        // http://www.regexguru.com/2008/04/watch-out-for-zero-length-matches
+        if (match.index === regex.lastIndex) {
+          regex.lastIndex++
+        }
         const matchObj = {
-          start: start,
-          end: end,
+          start: match.index,
+          end: regex.lastIndex,
         }
         allMatches.push(Object.assign({}, w, matchObj))
-      })
+      }
     } else {
       allMatches.push(w)
     }
   })
-
   return allMatches
 }
 
@@ -40,6 +37,9 @@ class Transformer extends Component {
   buildElement = (text, key, match = null) => {
     let elm = <span key={`nomatch-${key}`}>{text}</span>
     if (match) {
+      if (match.action === 'click' && !match.actionCallback) {
+        match.actionCallback = null
+      }
       elm = (
         <span
           key={`match${key}`}
@@ -60,6 +60,7 @@ class Transformer extends Component {
     let prevEnd = 0
 
     let elements = matchList.sort((m1, m2) => m1.start - m2.start).map((m, idx) => {
+      
       // record previous end spot
       const workingEnd = prevEnd
       // if this part of the text has already been handled
