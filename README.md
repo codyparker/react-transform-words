@@ -1,8 +1,9 @@
 # react-transform-words
 
-> A React component that transforms individual words in a block of text with css classes and actions.
-
 [![NPM](https://img.shields.io/npm/v/react-transform-words.svg)](https://www.npmjs.com/package/react-transform-words) ![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)
+
+
+> A React component that transforms individual words in a block of text with css classes and actions.
 
 
 ## Install
@@ -17,33 +18,42 @@ npm install --save react-transform-words
 
 ## Usage
 
+### [Check out the demo](https://codyparker.github.io/react-transform-words/) for some simple examples. 
+
 ```jsx
 import React, { Component } from 'react'
 
 import Transformer from 'react-transform-words'
 
 class ExampleTransformer extends Component {
-  const searchWords = [
+  searchWords = [
     {
       word: 'fat',
+      caseSensitive: true,
     },
     {
-      word: 'cultivating mass',
+      word: 'cultivating mass', // can be a phrase
       action: 'click',
-      className: 'clicky-word', // custom css class
-      actionCallback: () => {console.log('clicked!!')} // captures action (click)
+      className: 'clicky-word', // set a custom css class
+      actionCallback: () => { console.log('clicked!!') } // captures action (on click)
     }
   ]
   render () {
     return (
        <Transformer
-        words={searchWords}
+        words={this.searchWords}
         displayText={"I’m not fat. I’m cultivating mass. -Fat Mac"} />
     )
   }
 }
 ```
+The above would result in this:
 
+![Example Render](/example/public/example.png)
+
+So, we're passing in an array with one word and one phrase to transform. 
+* We didn't provide a `className` for *fat*, so it used the built-in default.
+* Notice that "fat" isn't matching both occurances because we've passed in `caseSensitive: true` for that word.
 
 ## Props
 

@@ -17,8 +17,6 @@ export const buildMatches = (words, text) => {
 
       // eslint-disable-next-line no-cond-assign
       while (match = regex.exec(text)) {
-        // Chrome locked up in testing with a pipe in the search text, found the issue on regexguru
-        // http://www.regexguru.com/2008/04/watch-out-for-zero-length-matches
         if (match.index === regex.lastIndex) {
           regex.lastIndex++
         }
@@ -99,9 +97,9 @@ class Transformer extends Component {
 
   render() {
     return (
-      <div id='word-transformer'>
+      <React.Fragment>
         {this.props.words.length > 0 ? this.renderWordTransforms() : this.props.displayText}
-      </div>
+      </React.Fragment>
     )
   }
 }
