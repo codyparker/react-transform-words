@@ -1,10 +1,18 @@
 {
   "name": "react-transform-words",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A React component that transforms individual words in a block of text with css classes and actions.",
-  "author": "codyparker",
+  "keywords": ["react", "reactjs", "component", "search", "text", "match", "replace", "transform", "highlighter", "highlight", "onClick"],
+  "author": "Cody Parker <codyparker@gmail.com> (http://codyparker.com)",
   "license": "MIT",
-  "repository": "codyparker/react-transform-words",
+  "repository": {
+    "type": "git",
+    "url": "codyparker/react-transform-words"
+  },
+  "bugs": {
+    "url": "https://github.com/codyparker/react-transform-words/issues"
+  },
+  "homepage": "https://github.com/codyparker/react-transform-words#readme",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -56,12 +64,11 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-url": "^1.4.0"
+    "rollup-plugin-url": "^1.4.0",
+    "enzyme": "^3.5.0"
+
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "enzyme": "^3.5.0"
-  }
+  ]
 }

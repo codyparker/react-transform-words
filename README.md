@@ -65,7 +65,7 @@ An array of word objects are passed to the Transfomer are used by the component 
 | replaceText    | String   |                                               |                    | The text to replace the word with if using the 'change' action                    |
 
 
-### Examples
+### Word Object Examples
 ```js
 [
   {
