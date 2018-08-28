@@ -23,6 +23,11 @@ body {
   padding:12px;
 }
 
+.title-bar a {
+  color:#fff;
+  text-decoration: none;
+}
+
 
 .clicky-word {
   text-decoration: underline;
