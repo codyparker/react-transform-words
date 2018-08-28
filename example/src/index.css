@@ -1,3 +1,10 @@
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +12,8 @@ body {
 }
 
 .title-bar {
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(69, 40, 92);
   color: #fff;
   font-size: 28px;
@@ -13,6 +22,7 @@ body {
   margin-bottom: 20px;
   padding:12px;
 }
+
 
 .clicky-word {
   text-decoration: underline;
@@ -28,7 +38,7 @@ body {
 }
 
 .change-word {
-  color: rgb(13, 27, 153);
+  color:#f00bff;
   font-weight: bold;
 }
 
@@ -82,16 +92,11 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   padding: 26px;
-  background-color: #dfd3d3;
+  background-color: #d8def5;
   margin-top: 20px;
   line-height: 30px;
 }
 
-.transform-text {
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-}
 
 .custom-text {
   width: 300px;
@@ -105,10 +110,6 @@ body {
 
 .center {
   text-align: center;
-}
-
-.custom-search {
-  display: flex;
 }
 
 .custom-instructions {

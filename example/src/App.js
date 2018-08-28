@@ -78,7 +78,10 @@ export default class App extends Component {
     
     return (
       <div>
-        <div className="title-bar">React Transform Words</div>
+        <div className="title-bar">
+          React Transform Words
+          <a href="https://github.com/codyparker/react-transform-words" className="fontawesome-github" />
+        </div>
         <div className="options-panel">
           <div>
             <button
