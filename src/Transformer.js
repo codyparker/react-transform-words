@@ -10,7 +10,9 @@ export const buildMatches = (words, text) => {
     if (w.start === undefined && w.end === undefined) {
       const searchWord = w.word
       const modifiers = w.caseSensitive ? 'g' : 'gi'
-      const regex = new RegExp(searchWord, modifiers)
+      const escaped = searchWord.replace(/[.*+?^${}()[\]\\]/g, '\\$&')
+
+      const regex = new RegExp(escaped, modifiers)
       let match = []
 
       // eslint-disable-next-line no-cond-assign
