@@ -36,7 +36,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.basic_with_class} />
+        matchWords={testWords.basic_with_class} />
     )
     expect(wrapper).toMatchSnapshot()
     
@@ -47,10 +47,10 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={[]} />
+        matchWords={[]} />
     )
-    expect(wrapper.find('#word-transformer').exists()).toBe(true)
-    expect(wrapper.find('#word-transformer').text()).toBe(wrapper.instance().props.displayText)
+    expect(wrapper.first().exists()).toBe(true)
+    expect(wrapper.first().text()).toBe(wrapper.instance().props.displayText)
 
   })
   
@@ -58,7 +58,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.basic_no_class} />
+        matchWords={testWords.basic_no_class} />
     )
     expect(wrapper.first().childAt(1).hasClass('transformer')).toBe(true)
   })
@@ -67,7 +67,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.basic_with_class} />
+        matchWords={testWords.basic_with_class} />
     )
     expect(wrapper.first().childAt(1).hasClass('yellow-text')).toBe(true)
   })
@@ -76,7 +76,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.basic_no_class} />
+        matchWords={testWords.basic_no_class} />
     )
     expect(wrapper.first().children()).toHaveLength(3)
   })
@@ -85,7 +85,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.first_word} />
+        matchWords={testWords.first_word} />
     )
     expect(wrapper.first().children()).toHaveLength(2)
   })
@@ -94,7 +94,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.clickable_with_action} />
+        matchWords={testWords.clickable_with_action} />
     )
     wrapper.first().childAt(1).simulate('click')
     expect(testFn).toHaveBeenCalled()
@@ -105,7 +105,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.mouseover_with_action} />
+        matchWords={testWords.mouseover_with_action} />
     )
     wrapper.first().childAt(1).simulate('mouseover')
     expect(testFn).toHaveBeenCalled()
@@ -116,7 +116,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.doubleclick_with_action} />
+        matchWords={testWords.doubleclick_with_action} />
     )
     wrapper.first().childAt(1).simulate('doubleclick')
     expect(testFn).toHaveBeenCalled()
@@ -127,7 +127,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.doubleclick_with_action} />
+        matchWords={testWords.doubleclick_with_action} />
     )
     wrapper.first().childAt(1).simulate('doubleclick')
     expect(testFn).toHaveBeenCalled()
@@ -138,7 +138,7 @@ describe('Transformer', () => {
     const wrapper = shallow(
       <Transformer
         displayText={displayText}
-        words={testWords.change_text} />
+        matchWords={testWords.change_text} />
     )
     expect(wrapper.first().childAt(1).text()).toEqual('replaced it')
   })

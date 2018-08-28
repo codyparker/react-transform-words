@@ -3,3 +3,8 @@
     background-color: #D4FF00;
 }
   
+:local(.error) {
+    color: red;
+    font-weight: bold;
+}
+  

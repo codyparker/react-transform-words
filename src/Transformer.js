@@ -33,7 +33,7 @@ export const buildMatches = (words, text) => {
   return allMatches
 }
 
-class Transformer extends Component {
+export class Transformer extends Component {
   buildElement = (text, key, match = null) => {
     let elm = <span key={`nomatch-${key}`}>{text}</span>
     if (match) {
@@ -56,7 +56,7 @@ class Transformer extends Component {
 
   renderWordTransforms = () => {
     const txt = this.props.displayText
-    const matchList = buildMatches(this.props.words, txt)
+    const matchList = buildMatches(this.props.matchWords, txt)
     let prevEnd = 0
 
     let elements = matchList.sort((m1, m2) => m1.start - m2.start).map((m, idx) => {
@@ -98,20 +98,21 @@ class Transformer extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.words.length > 0 ? this.renderWordTransforms() : this.props.displayText}
+        {this.props.matchWords.length > 0 ? this.renderWordTransforms() : this.props.displayText}
       </React.Fragment>
     )
   }
 }
 
 Transformer.propTypes = {
-  words: PropTypes.array.isRequired,
+  matchWords: PropTypes.array,
   displayText: PropTypes.string.isRequired,
-  defaultClass: PropTypes.string
+  defaultClass: PropTypes.string,
 }
 
 Transformer.defaultProps = {
-  defaultClass: styles.highlighter ? styles.highlighter : 'transformer'
+  defaultClass: styles.highlighter ? styles.highlighter : 'transformer',
+  matchWords: [],
 }
 
 export default Transformer

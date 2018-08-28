@@ -26,7 +26,7 @@ import React, { Component } from 'react'
 import Transformer from 'react-transform-words'
 
 class ExampleTransformer extends Component {
-  searchWords = [
+  matchWords = [
     {
       word: 'fat',
       caseSensitive: true,
@@ -41,7 +41,7 @@ class ExampleTransformer extends Component {
   render () {
     return (
        <Transformer
-        words={this.searchWords}
+        matchWords={this.matchWords}
         displayText={"I’m not fat. I’m cultivating mass. -Fat Mac"} />
     )
   }
@@ -59,7 +59,7 @@ So, we're passing in an array with one word and one phrase to transform.
 
 | Property     | Type           | Required | Default            | Description                                                                    |
 | :----------- | :------------- | :------: | :----------------- | :----------------------------------------------------------------------------- |
-| words        | Array\<Object> | Yes      |                    | Array of word objects that the transformer will match (see below)              |
+| matchWords   | Array\<Object> | No       |                    | Array of word objects that the transformer will match (see below)              |
 | displayText  | String         | Yes      |                    | The text to match words within                                                 |
 | defaultClass | String         | No       | built-in highlight | The class applied to matched words that don't have a class provided themselves |
 

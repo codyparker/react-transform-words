@@ -142,7 +142,7 @@ export default class App extends Component {
         </div>
         <div className="transform-text">
           <Transformer
-            words={words}
+            matchWords={words}
             displayText='Dayman, fighter of the Nightman, champion of the sun, you’re a master of karate and friendship for everyone. Dayman!' />
         </div>
       </div>

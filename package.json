@@ -1,6 +1,6 @@
 {
   "name": "react-transform-words",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A React component that transforms individual words in a block of text with css classes and actions.",
   "keywords": ["react", "reactjs", "component", "search", "text", "match", "replace", "transform", "highlighter", "highlight", "onClick"],
   "author": "Cody Parker <codyparker@gmail.com> (http://codyparker.com)",
