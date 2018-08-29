@@ -69,6 +69,7 @@ An array of word objects are passed to the Transfomer are used by the component 
 
 | Option         | Type     | Options                                       | Default            | Description                                                                       |
 | :------------- | :------- | :-------------------------------------------: | :----------------- | :-------------------------------------------------------------------------------- |
+| word           | String   |                                               |                    | The word to match and transform                                                   |
 | className      | String   |                                               | props.defaultClass | Applies the className to the word                                                 |
 | action         | String   | 'click', 'doubleclick', 'mouseover', 'change' |                    | Adds the action to the word (use with actionCallback or replaceText)              |
 | actionCallback | Function |                                               |                    | The function to be called when the user triggers the action (ie, clicks the word) |
