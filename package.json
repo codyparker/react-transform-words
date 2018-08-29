@@ -1,8 +1,20 @@
 {
   "name": "react-transform-words",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A React component that transforms individual words in a block of text with css classes and actions.",
-  "keywords": ["react", "reactjs", "component", "search", "text", "match", "replace", "transform", "highlighter", "highlight", "onClick"],
+  "keywords": [
+    "react",
+    "reactjs",
+    "component",
+    "search",
+    "text",
+    "match",
+    "replace",
+    "transform",
+    "highlighter",
+    "highlight",
+    "onClick"
+  ],
   "author": "Cody Parker <codyparker@gmail.com> (http://codyparker.com)",
   "license": "MIT",
   "repository": {
@@ -66,7 +78,6 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-url": "^1.4.0",
     "enzyme": "^3.5.0"
-
   },
   "files": [
     "dist"
