@@ -60,7 +60,7 @@ export class Transformer extends Component {
     let prevEnd = 0
 
     let elements = matchList.sort((m1, m2) => m1.start - m2.start).map((m, idx) => {
-      
+
       // record previous end spot
       const workingEnd = prevEnd
       // if this part of the text has already been handled
