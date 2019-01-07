@@ -9,7 +9,9 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-transform-words": "link:.."
+    "react-transform-words": "link:..",
+    "webpack-dev-server": ">=3.1.11"
+
   },
   "scripts": {
     "start": "react-scripts start",
