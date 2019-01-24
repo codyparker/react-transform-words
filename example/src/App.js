@@ -55,6 +55,9 @@ export default class App extends Component {
         word: "Nightman",
         className: "highlight-word",
         caseSensitive: this.state.caseSensitive,
+        extraProps: {
+          title: "Why would you wanna play the Nightman?"
+        }
       },
       "friendship": {
         word: "friendship",

@@ -51,7 +51,8 @@ export class Transformer extends Component {
           className={match.className !== undefined ? match.className : this.props.defaultClass}
           onClick={match.action === 'click' ? match.actionCallback : null}
           onDoubleClick={match.action === 'doubleclick' ? match.actionCallback : null}
-          onMouseOver={match.action === 'mouseover' ? match.actionCallback : null}>
+          onMouseOver={match.action === 'mouseover' ? match.actionCallback : null}
+          {...match.extraProps}>
           {match.action === 'change' ? match.replaceText : text}
         </span>
       )

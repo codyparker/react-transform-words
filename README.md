@@ -75,6 +75,7 @@ An array of word objects are passed to the Transfomer are used by the component 
 | actionCallback | Function |                                               |                    | The function to be called when the user triggers the action (ie, clicks the word)                               |
 | replaceText    | String   |                                               |                    | The text to replace the word with if using the 'change' action                                                  |
 | format         | String   |               'regex', 'string'               | 'string'           | If set to 'regex', regular expression characters will not be escaped. This treats the string as a normal regex' |
+| extraProps     | Object   |                                               |                    | Each key/value will be added as attributes to the highlighted word's `<span>` tag                               |
 
 ### Word Object Examples
 ```js
@@ -97,6 +98,10 @@ An array of word objects are passed to the Transfomer are used by the component 
   {
     word: "\\bexact\\b", // text with regex that matches only the full word 'exact'. Using double-slash to escape
     format: 'regex', // tells the transformer to use the string as regex instead of a normal string, which has regex characters escaped by default
+    extraProps: {
+      title: "A title for the highlight",
+      lang: 'en'
+    },
   }
 ]
 ```
