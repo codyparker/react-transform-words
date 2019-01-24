@@ -47,6 +47,12 @@ body {
   font-weight: bold;
 }
 
+.regex-match-style {
+  color: rgb(0, 60, 255);
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
 .options-panel {
   padding: 20px;
   border-radius: 8px;

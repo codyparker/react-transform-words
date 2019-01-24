@@ -10,6 +10,7 @@ export default class App extends Component {
       selectedOptions: [],
       caseSensitive: false,
       customText: '',
+      
     }
 
     this.txtCustom = React.createRef()
@@ -65,6 +66,11 @@ export default class App extends Component {
       "custom": {
         word: this.state.customText,
         className: "custom-search-style"
+      },
+      "regex": {
+        word: '\\ba\\b',
+        className: "regex-match-style",
+        format: 'regex',
       }
     }
   
@@ -115,7 +121,18 @@ export default class App extends Component {
               Finds the lower-case word 'friendship', and replaces it with another word
             </span>
           </div>
+          
           <div>
+            <button
+              className={this.state.selectedOptions.includes('regex') ? 'active' : '' }
+              onClick={() => this.handleOptionClick('regex')}>
+              Only the word 'a' <br /> <small>(regex format)</small>
+            </button>
+            <span>
+              Finds the word 'a', matching it alone and not a's included in other words.
+            </span>
+            </div>
+            <div>
             <button
               className={this.state.caseSensitive ? 'active' : ''}
               onClick={() => this.handleCaseSensitive()}>
@@ -139,6 +156,7 @@ export default class App extends Component {
                 ref={this.txtCustom}/>
             </div>
           </div>
+          
         </div>
         <div className="transform-text">
           <Transformer

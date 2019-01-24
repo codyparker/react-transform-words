@@ -8,23 +8,28 @@ export const buildMatches = (words, text) => {
   words.filter(hw => hw !== '').forEach((w) => {
     // if there was no start and end provided, search for th word instead
     if (w.start === undefined && w.end === undefined) {
-      const searchWord = w.word
+      let searchWord = w.word
       const modifiers = w.caseSensitive ? 'g' : 'gi'
-      const escaped = searchWord.replace(/[.*+?^${}()[\]\\]/g, '\\$&')
-
-      const regex = new RegExp(escaped, modifiers)
-      let match = []
-
-      // eslint-disable-next-line no-cond-assign
-      while (match = regex.exec(text)) {
-        if (match.index === regex.lastIndex) {
-          regex.lastIndex++
+      // if sent in as string(default), escape for regex
+      if (w.format !== 'regex') {
+        searchWord = searchWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      }
+      try {
+        const regex = new RegExp(searchWord, modifiers)
+        let match = []
+        // eslint-disable-next-line no-cond-assign
+        while (match = regex.exec(text)) {
+          if (match.index === regex.lastIndex) {
+            regex.lastIndex++
+          }
+          const matchObj = {
+            start: match.index,
+            end: regex.lastIndex,
+          }
+          allMatches.push(Object.assign({}, w, matchObj))
         }
-        const matchObj = {
-          start: match.index,
-          end: regex.lastIndex,
-        }
-        allMatches.push(Object.assign({}, w, matchObj))
+      } catch (err) {
+        return
       }
     } else {
       allMatches.push(w)

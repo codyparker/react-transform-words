@@ -59,22 +59,22 @@ So, we're passing in an array with one word and one phrase to transform.
 
 | Property     | Type           | Required | Default            | Description                                                                    |
 | :----------- | :------------- | :------: | :----------------- | :----------------------------------------------------------------------------- |
-| matchWords   | Array\<Object> | No       |                    | Array of word objects that the transformer will match (see below)              |
-| displayText  | String         | Yes      |                    | The text to match words within                                                 |
-| defaultClass | String         | No       | built-in highlight | The class applied to matched words that don't have a class provided themselves |
+| matchWords   | Array\<Object> |    No    |                    | Array of word objects that the transformer will match (see below)              |
+| displayText  | String         |   Yes    |                    | The text to match words within                                                 |
+| defaultClass | String         |    No    | built-in highlight | The class applied to matched words that don't have a class provided themselves |
 
 ## Search Word Objects
 
 An array of word objects are passed to the Transfomer are used by the component to search for and apply class changes. Each word can have its own options, allowing you to customize each with CSS, actions and more. These are the word object options:
 
-| Option         | Type     | Options                                       | Default            | Description                                                                       |
-| :------------- | :------- | :-------------------------------------------: | :----------------- | :-------------------------------------------------------------------------------- |
-| word           | String   |                                               |                    | The word to match and transform                                                   |
-| className      | String   |                                               | props.defaultClass | Applies the className to the word                                                 |
-| action         | String   | 'click', 'doubleclick', 'mouseover', 'change' |                    | Adds the action to the word (use with actionCallback or replaceText)              |
-| actionCallback | Function |                                               |                    | The function to be called when the user triggers the action (ie, clicks the word) |
-| replaceText    | String   |                                               |                    | The text to replace the word with if using the 'change' action                    |
-
+| Option         | Type     |                    Options                    | Default            | Description                                                                                                     |
+| :------------- | :------- | :-------------------------------------------: | :----------------- | :-------------------------------------------------------------------------------------------------------------- |
+| word           | String   |                                               |                    | The word to match and transform                                                                                 |
+| className      | String   |                                               | props.defaultClass | Applies the className to the word                                                                               |
+| action         | String   | 'click', 'doubleclick', 'mouseover', 'change' |                    | Adds the action to the word (use with actionCallback or replaceText)                                            |
+| actionCallback | Function |                                               |                    | The function to be called when the user triggers the action (ie, clicks the word)                               |
+| replaceText    | String   |                                               |                    | The text to replace the word with if using the 'change' action                                                  |
+| format         | String   |               'regex', 'string'               | 'string'           | If set to 'regex', regular expression characters will not be escaped. This treats the string as a normal regex' |
 
 ### Word Object Examples
 ```js
@@ -93,6 +93,10 @@ An array of word objects are passed to the Transfomer are used by the component 
     className: "my-custom-class", // class to apply to the word
     action: "change", // changes the word to replaceText property
     replaceText: "new text" // text that will be used with action 'change'
+  }
+  {
+    word: "\\bexact\\b", // text with regex that matches only the full word 'exact'. Using double-slash to escape
+    format: 'regex', // tells the transformer to use the string as regex instead of a normal string, which has regex characters escaped by default
   }
 ]
 ```
